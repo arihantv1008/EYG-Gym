@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Your Game - EYGFitness | Premium Fitness Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background: #0a0000;
+        }
+
+        /* Dynamic particle background */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #ff1744, #ff5722);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 23, 68, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 87, 34, 0.3), transparent 50%),
+                linear-gradient(135deg, #1a0000 0%, #000 100%);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="g1" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ff1744" stop-opacity="0.3"/><stop offset="100%" stop-color="%23ff1744" stop-opacity="0"/></radialGradient></defs><rect fill="%23110000" width="1200" height="800"/><circle fill="url(%23g1)" cx="300" cy="200" r="200"/><circle fill="url(%23g1)" cx="900" cy="600" r="150"/><path fill="%23ff5722" opacity="0.1" d="M0 400Q400 100 800 400Q1200 700 1200 400V800H0z"/></svg>');
+            background-size: cover;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff1744, #ff5722, #ffeb3b, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px rgba(255, 23, 68, 0.8);
+            animation: fieryGlow 2s ease-in-out infinite alternate;
+            letter-spacing: -2px;
+        }
+
+        @keyframes fieryGlow {
+            0% {
+                filter: drop-shadow(0 0 20px #ff1744) drop-shadow(0 0 40px #ff5722);
+                transform: scale(1);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 30px #ff1744) drop-shadow(0 0 60px #ff5722);
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-content p {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            margin: 0 1.5rem;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff1744, #ff5722);
+            color: #fff;
+            box-shadow: 0 15px 40px rgba(255, 23, 68, 0.6);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(255, 23, 68, 0.8);
+            border-color: #ffeb3b;
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ff1744;
+            border: 3px solid #ff1744;
+            font-weight: 800;
+        }
+
+        .btn-secondary:hover {
+            background: #ff1744;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(255, 23, 68, 0.6);
+            color: #fff;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff1744, #ff5722, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff1744, #ff5722);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, rgba(26, 0, 0, 0.8), rgba(255, 23, 68, 0.1));
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ff1744, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 5rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(255, 23, 68, 0.15), rgba(255, 87, 34, 0.1));
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            border: 2px solid rgba(255, 23, 68, 0.3);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff1744, #ff5722, #ffeb3b, #ff1744);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #ff1744;
+            box-shadow: 0 30px 80px rgba(255, 23, 68, 0.5);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffeb3b;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(255, 235, 59, 0.5);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #ff5722;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .offer-price {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff1744, #ff5722, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 30px rgba(255, 23, 68, 0.8);
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 2.5rem;
+            background: linear-gradient(145deg, rgba(255, 23, 68, 0.1), rgba(26, 0, 0, 0.8));
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 23, 68, 0.3);
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.2), transparent);
+            transition: width 0.6s;
+        }
+
+        .feature-item:hover::before {
+            width: 100%;
+        }
+
+        .feature-item:hover {
+            transform: translateX(20px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(255, 23, 68, 0.4);
+            border-color: #ff1744;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff1744, #ff5722);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-right: 2rem;
+            box-shadow: 0 15px 40px rgba(255, 23, 68, 0.6);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 20px 50px rgba(255, 23, 68, 0.8);
+        }
+
+        /* Owner Section */
+        .owner-section {
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(26, 0, 0, 0.9));
+            text-align: center;
+            /* z-index: -1; */
+        }
+
+        .owner-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            overflow: hidden;
+            position: relative;
+            animation: pulseOwner 3s ease-in-out infinite;
+        }
+
+        .owner-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            opacity: 1;
+            display: block;
+        } 
+
+        @keyframes pulseOwner {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.3), rgba(255, 87, 34, 0.2));
+            border: 3px solid rgba(255, 23, 68, 0.6);
+            border-radius: 40px;
+            padding: 5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 235, 59, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, #000 0%, #1a0000 100%);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: #ff1744;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .social-link {
+            color: #ff5722;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #ffeb3b;
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .btn {
+                display: block;
+                margin: 1.5rem auto;
+                max-width: 280px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elevate Your Game</h1>
+                <p>Train Harder. Get Stronger. Become Unstoppable.</p>
+                <div>
+                    <a href="#pricing" class="btn btn-primary">Join Now</a>
+                    <a href="#cta" class="btn btn-secondary">Book Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title scale-in">About the Gym</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Elevate Your Game (EYGFitness)</h3>
+                    <p>Elevate Your Game (EYGFitness) is a modern fitness center dedicated to strength, endurance, and
+                        transformation. Our goal is to help every member push their limits and unlock their true
+                        potential through discipline, training, and consistency.</p>
+                </div>
+                <div class="contact-info fade-in">
+                    <h4><i class="fas fa-map-marker-alt"></i> Gym Address</h4>
+                    <p><strong>Khanapur Road, Peeranwadi<br>Belgavi, Karnataka – 590014</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans -->
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="section-title scale-in">Opening Offer Memberships</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">Yearly Plan</div>
+                    <div class="old-price">Was ₹16,000</div>
+                    <div class="offer-price">₹8,999</div>
+                    <a href="#cta" class="btn btn-primary">Join Now</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">6 Months Plan</div>
+                    <div class="old-price">Was ₹11,000</div>
+                    <div class="offer-price">₹6,999</div>
+                    <a href="#cta" class="btn btn-primary">Join Now</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">3 Months Plan</div>
+                    <div class="old-price">Was ₹7,000</div>
+                    <div class="offer-price">₹3,999</div>
+                    <a href="#cta" class="btn btn-primary">Join Now</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="plan-name">1 Month Plan</div>
+                    <div class="old-price">Was ₹3,000</div>
+                    <div class="offer-price">₹1,499</div>
+                    <a href="#cta" class="btn btn-primary">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title scale-in">Why Choose EYGFitness</h2>
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div>
+                        <h4>Modern Gym Equipment</h4>
+                        <p>State-of-the-art equipment for optimal training</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div>
+                        <h4>Strength & Conditioning</h4>
+                        <p>Expert training programs for all levels</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h4>Friendly Environment</h4>
+                        <p>Supportive community that motivates you</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <div>
+                        <h4>Personalized Guidance</h4>
+                        <p>Tailored workout plans for your goals</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div>
+                        <h4>Affordable Plans</h4>
+                        <p>Best value fitness memberships in town</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gym Owner -->
+    <section class="section owner-section">
+        <div class="container">
+            <h2 class="section-title scale-in">Meet the Owner</h2>
+            <div class="owner-image fade-in">
+                <!-- <i class="fas fa-user-tie"></i> -->
+                <img src="prasad.jpeg" alt="owner">
+            </div>
+            <h3>Prasad Belgaonkar</h3>
+            <p>Prasad Belgaonkar founded Elevate Your Game to inspire people to push their limits and transform their
+                lives through fitness and discipline.</p>
+            <div class="owner-contact fade-in">
+                <p><i class="fas fa-phone"></i> <strong>9945139787</strong></p>
+                <a href="https://instagram.com/i_king__70" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i> @i_king__70
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="section">
+        <div class="container">
+            <div class="cta-section scale-in">
+                <h2 class="section-title">Start Your Fitness Journey Today</h2>
+                <p>Join EYGFitness today and take the first step toward a stronger and healthier life.</p>
+                <div class="cta-numbers">
+                    <div class="cta-number">
+                        <span>📞 7349783887</span>
+                        <small>Membership Booking</small>
+                    </div>
+                </div>
+                <div>
+                    <a href="tel:7349783887" class="btn btn-primary">Join Now</a>
+                    <a href="tel:7349783887" class="btn btn-secondary">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Elevate Your Game (EYGFitness)</h3>
+                    <p>Khanapur Road, Peeranwadi<br>Belgavi – 590014</p>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Owner: 9945139787<br>
+                        <i class="fas fa-phone"></i> Bookings: 7349783887
+                    </p>
+                </div>
+                <div>
+                    <h3>Follow Us</h3>
+                    <p><a href="https://instagram.com/i_king_ _70" target="_blank" class="social-link">@i_king_70</a></p>
+                </div>
+            </div>
+            <div style="border-top: 2px solid rgba(255,23,68,0.5); padding-top: 3rem; margin-top: 3rem;">
+                <p style="font-size: 1.1rem; font-weight: 600;">© 2026 EYG Fitness Gym. All Rights Reserved.</p>
+                <p class="developer-credit" style="color: #ff5722; font-weight: 600;">Developed by Arihant Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamic particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize
+        createParticles();
+        window.addEventListener('load', () => {
+            document.querySelector('.hero').classList.add('visible');
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+
+</html>
